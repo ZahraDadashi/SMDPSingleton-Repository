@@ -40,21 +40,26 @@ namespace SMDP.Controllers
          {
             string userAgent = Request.Headers["User-Agent"].ToString();
             string method = Request.Method.ToString();
-            
+            string userr = User?.Identity.Name;
+
             _logger.WriteRequest(userAgent);
             _logger.WriteKind(method);
+            _logger.GetUser(userr);
             return _smdps.DailyPrice(a);
          }
 
         [ProducesResponseType(typeof(List<Fund>), 200)]
         [HttpGet("/Fund")]
         public dynamic Fund()
-        {
+        {           
             string userAgent = Request.Headers["User-Agent"].ToString();
             string method = Request.Method.ToString();
-            
+            string userr = User?.Identity.Name;
+
             _logger.WriteRequest(userAgent);
             _logger.WriteKind(method);
+            _logger.GetUser(userr);       
+
             return _smdps.Fund();
         }
 
@@ -65,9 +70,12 @@ namespace SMDP.Controllers
         {
             string userAgent = Request.Headers["User-Agent"].ToString();
             string method = Request.Method.ToString();
+            string userr = User?.Identity.Name;
 
             _logger.WriteRequest(userAgent);
             _logger.WriteKind(method);
+            _logger.GetUser(userr);
+
             return _smdps.Industry();
         }
 
@@ -77,10 +85,13 @@ namespace SMDP.Controllers
         {
             string userAgent = Request.Headers["User-Agent"].ToString();
             string method = Request.Method.ToString();
+            string userr = User?.Identity.Name;
             
+
             _logger.WriteRequest(userAgent);
             _logger.WriteKind(method);
-            
+            _logger.GetUser(userr);
+
             return _smdps.Instrument();
         }
 
@@ -90,11 +101,13 @@ namespace SMDP.Controllers
         {
             string userAgent = Request.Headers["User-Agent"].ToString();
             string method = Request.Method.ToString();
-            
+            string userr = User?.Identity.Name;
+
             _logger.WriteRequest(userAgent);
             _logger.WriteKind(method);
-            var a = _smdps.Lettertype();
-            return a;
+            _logger.GetUser(userr);
+           
+            return _smdps.Lettertype();
         }
 
     }
